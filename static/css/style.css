@@ -1,0 +1,192 @@
+
+
+header {
+    background-color: rgba(0, 0, 0, 0.527);
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.content {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+    .content {
+        margin: 20px;
+        padding: 15px;
+    }
+}
+/* home */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.gallery-image {
+    width: 300px; /* Adjust as needed */
+    height: auto;
+    margin: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.gallery-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.large-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    animation: zoomIn 0.5s;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+/* about */
+.about-container {
+    background-image: url('/static/images/about.png'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    color: #fff; /* Change text color for better contrast */
+    padding: 20px;
+    border-radius: 10px; /* Optional: rounded corners */
+    opacity: 0.9; /* Slight transparency */
+}
+
+.about-container h1,
+.about-container h2,
+.about-container h3 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adds shadow for better readability */
+}
+
+.about-container p {
+    margin-bottom: 15px; /* Spacing between paragraphs */
+    line-height: 1.6; /* Better line spacing */
+}
+
+code {
+    background-color: rgba(255, 255, 255, 0.8); /* Background for code elements */
+    color: #000; /* Text color for code */
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+/* contact*/
+.contact-container {
+    background-color: #f9f9f9; /* Light background color */
+    color: #333; /* Dark text for better readability */
+    padding: 20px;
+    border-radius: 10px; /* Optional: rounded corners */
+    max-width: 600px; /* Limit the width */
+    margin: auto; /* Center the container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+.contact-info p {
+    margin: 10px 0; /* Spacing between paragraphs */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-top: 10px; /* Spacing above labels */
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 5px; /* Space below labels */
+}
+
+.contact-form button {
+    margin-top: 15px; /* Space above button */
+    padding: 10px;
+    background-color: #007BFF; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}

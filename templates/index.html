@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Predict Molecule Activity{% endblock %}
+
+{% block content %}
+<h1>Molecule Activity Prediction</h1>
+
+<form method="POST">
+    <input type="text" name="smile_input" placeholder="Enter SMILES string" required>
+    <button type="submit">Submit</button>
+</form>
+
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+{% if mol_image %}
+    <h3>Molecule Image:</h3>
+    <img src="data:image/png;base64,{{ mol_image }}" alt="Molecule Image">
+{% endif %}
+
+<h3>Molecular Properties:</h3>
+<p><strong>Molecular Weight:</strong> {{ mol_weight }}</p>
+<p><strong>Chemical Formula:</strong> {{ mol_formula }}</p>
+
+{% if rf_pred %}
+    <h3>Prediction:</h3>
+    <p><strong>Activity:</strong> {{ rf_pred }}</p>
+    <p><strong>Confidence:</strong> {{ rf_conf }}%</p>
+{% endif %}
+{% endblock %}

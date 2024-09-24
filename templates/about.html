@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}About - Molecule Activity Prediction{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <h1>About the App</h1>
+    <p>This app predicts molecule activity using a pre-trained machine learning model and RDKit for molecular analysis. It's built using Flask, a Python web framework.</p>
+    
+    <h2>Algorithms Used in This Application</h2>
+    <p>Our application utilizes a variety of machine learning algorithms to ensure accurate predictions:</p>
+
+    <h3>1. Random Forest</h3>
+    <p>Random Forest is an ensemble learning method that constructs multiple decision trees during training and outputs the mode of the classes for classification. It is highly effective in reducing overfitting by averaging multiple trees, thus improving generalization. The key hyperparameters optimized for Random Forest include the number of trees (<code>n_estimators</code>, ranging from 50 to 200 in intervals of 10), the maximum depth of each tree (<code>max_depth</code>, from 1 to 30 in intervals of 1), and the minimum number of samples required to split an internal node (<code>min_samples_split</code>, from 2 to 10 in intervals of 1).</p>
+
+    <h3>2. Decision Tree</h3>
+    <p>Decision Tree is a simple yet effective model for both classification and regression tasks. It splits the data into subsets based on the feature values, resulting in a tree-like model of decisions. The maximum depth of the tree (<code>max_depth</code>, from 1 to 30 in intervals of 1), the minimum samples required to split an internal node (<code>min_samples_split</code>, from 2 to 10 in intervals of 1), and the minimum samples required to be at a leaf node (<code>min_samples_leaf</code>, from 1 to 10 in intervals of 1) were the primary hyperparameters optimized.</p>
+
+    <h3>3. K-Nearest Neighbours (KNN)</h3>
+    <p>KNN is a non-parametric algorithm used for classification and regression. It classifies a data point based on the majority class of its neighbours. We optimized the number of neighbours (<code>n_neighbors</code>, from 1 to 30 in intervals of 1), the weight function used in prediction (uniform or distance), and the algorithm used to compute the nearest neighbours (ball_tree, kd_tree, brute).</p>
+
+    <h3>4. Gaussian Naive Bayes</h3>
+    <p>Gaussian Naive Bayes is a probabilistic classifier based on Bayes' theorem, assuming that the features follow a Gaussian distribution. It is particularly useful for its simplicity and effectiveness in high-dimensional data. The primary hyperparameter tuned was the variance smoothing parameter (<code>var_smoothing</code>, from 1e-9 to 1e-7 in intervals of 1e-9).</p>
+
+    <h3>5. Logistic Regression</h3>
+    <p>Logistic Regression is a linear model for binary classification that estimates the probabilities using a logistic function. It is widely used for its simplicity and interpretability. The regularization strength (<code>C</code>, from 0.1 to 10 in intervals of 0.1) and the type of regularization (L1, L2, elasticnet) were the key hyperparameters optimized.</p>
+
+    <h3>6. Artificial Neural Network (ANN)</h3>
+    <p>ANN is inspired by biological neural networks and is capable of capturing complex patterns in data. It consists of input, hidden, and output layers, where each node represents a neuron. We optimized the number of neurons in each layer (<code>neurons</code>, from 32 to 128 in intervals of 32), the number of hidden layers (<code>layers</code>, from 1 to 3), the activation function (relu, tanh, sigmoid), the optimizer (adam, rmsprop), the batch size (<code>batch_size</code>, from 16 to 64 in intervals of 16), and the learning rate (<code>learning_rate</code>, from 0.001 to 0.01 in intervals of 0.001).</p>
+
+    <h3>7. XGBoost</h3>
+    <p>XGBoost is an advanced implementation of gradient boosting and is known for its speed and performance. It uses a novel tree boosting technique that adds new models to correct errors made by existing models. The hyperparameters optimized for XGBoost included the number of gradient-boosted trees (<code>n_estimators</code>, from 50 to 300 in intervals of 10), the maximum depth of the trees (<code>max_depth</code>, from 1 to 30 in intervals of 1), and the balance of positive and negative weights (<code>scale_pos_weight</code>, from 0.1 to 10 in intervals of 0.1).</p>
+
+    <h3>8. Support Vector Machine (SVM)</h3>
+    <p>SVM is a supervised learning algorithm used for classification and regression tasks. It works by finding the hyperplane that best separates the data into different classes. Key hyperparameters for SVM optimization include the regularization parameter (<code>C</code>, from 0.01 to 100 in intervals of 0.01) and the kernel type (linear, polynomial, rbf).</p>
+</div>
+{% endblock %}

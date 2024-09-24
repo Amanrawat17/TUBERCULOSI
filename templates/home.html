@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Molecule Activity Prediction{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Molecule Activity Prediction App</h1>
+<p>This application allows you to predict the biological activity of molecules based on their chemical structure. Use the "Predict" page to get started.</p>
+
+<h2>Introduction to Tuberculosis</h2>
+<p>Tuberculosis (TB) is a highly infectious disease caused by the bacterium <em>Mycobacterium tuberculosis</em>. It primarily affects the lungs but can also impact other parts of the body, such as the brain, kidneys, and spine. The disease spreads through airborne particles when an infected person coughs, sneezes, or talks. Symptoms of pulmonary TB include a persistent cough that lasts for three weeks or longer, chest pain, and coughing up blood. Other symptoms can include weight loss, fatigue, fever, and night sweats.</p>
+
+<h3>Images Related to Tuberculosis</h3>
+<div class="image-gallery">
+    <img src="{{ url_for('static', filename='images/tb1.png') }}" alt="TB Image 1" class="gallery-image">
+    <img src="{{ url_for('static', filename='images/tb2.png') }}" alt="TB Image 2" class="gallery-image">
+    <img src="{{ url_for('static', filename='images/tb3.png') }}" alt="TB Image 3" class="gallery-image">
+</div>
+
+{% endblock %}

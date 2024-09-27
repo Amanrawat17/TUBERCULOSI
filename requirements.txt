@@ -1,6 +1,5 @@
 altair==5.4.1
 attrs==24.2.0
-beautifulsoup4==4.12.3
 blinker==1.8.2
 cachetools==5.5.0
 certifi==2024.8.30
@@ -9,10 +8,7 @@ click==8.1.7
 colorama==0.4.6
 filelock==3.16.1
 Flask==3.0.3
-fpdf==1.7.2
-gdown==5.2.0
 gitdb==4.0.11
-GitPython==3.1.43
 gunicorn==23.0.0
 idna==3.10
 importlib_metadata==8.5.0
@@ -33,7 +29,6 @@ protobuf==5.28.2
 pyarrow==17.0.0
 pydeck==0.9.1
 Pygments==2.18.0
-PyPDF2==3.0.1
 PySocks==1.7.1
 python-dateutil==2.9.0.post0
 pytz==2024.2
@@ -48,11 +43,9 @@ scipy==1.13.1
 six==1.16.0
 smmap==5.0.1
 soupsieve==2.6
-streamlit==1.38.0
 tenacity==8.5.0
 threadpoolctl==3.5.0
 toml==0.10.2
-tornado==6.4.1
 tqdm==4.66.5
 typing_extensions==4.12.2
 tzdata==2024.1

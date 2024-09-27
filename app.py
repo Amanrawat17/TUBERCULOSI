@@ -6,36 +6,32 @@ import pickle
 import numpy as np
 import io
 import base64
-
-# Load pre-trained model
-model_path = 'stacking_model.pkl'
-with open(model_path, 'rb') as file:
-    model = pickle.load(file)
+import bz2  # Import bz2 for decompression
 
 app = Flask(__name__)
+
+def load_model(compressed_file_path):
+    # Decompress and load the model
+    with bz2.open(compressed_file_path, 'rb') as f:
+        model = pickle.load(f)
+    return model
+
+# Load pre-trained model
+model_path = 'best_stacking_classifier (1).pkl.bz2'
+model = load_model(model_path)
+
 def drawing_molecule(smile):
-    '''
-    Draws molecule from SMILES string and converts it to base64 for display in HTML.
-    '''
     mol = Chem.MolFromSmiles(smile)
     if mol is not None:
         img = Draw.MolToImage(mol)
-        if isinstance(img, io.BytesIO) or hasattr(img, 'save'):  # Ensure img is a valid image object
-            buf = io.BytesIO()
-            img.save(buf, format='PNG')
-            buf.seek(0)
-            # Convert binary data to base64 for HTML rendering
-            img_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
-            return img_base64
-        else:
-            return None  # Return None if img is not valid
+        buf = io.BytesIO()
+        img.save(buf, format='PNG')
+        buf.seek(0)
+        img_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
+        return img_base64
     return None
 
-
 def generate_morgan_fingerprint(smiles, radius=2, n_bits=2048):
-    '''
-    Generates Morgan fingerprints for a given SMILES string.
-    '''
     mol = Chem.MolFromSmiles(smiles)
     if mol is not None:
         fp = AllChem.GetMorganFingerprintAsBitVect(mol, radius, nBits=n_bits)
@@ -43,10 +39,7 @@ def generate_morgan_fingerprint(smiles, radius=2, n_bits=2048):
     return np.zeros(n_bits)
 
 def compute_all_descriptors(smiles):
-    '''
-    Generates 208 molecular descriptors for a given SMILES string.
-    '''
-    descriptor_names = [desc[0] for desc in Descriptors.descList[:208]]  # Only first 208 descriptors
+    descriptor_names = [desc[0] for desc in Descriptors.descList[:208]]
     mol = Chem.MolFromSmiles(smiles)
     if mol is None:
         return np.zeros(len(descriptor_names))
@@ -69,7 +62,6 @@ def molecular_properties(smiles):
         properties["Chemical Formula"] = rdMolDescriptors.CalcMolFormula(mol)
     return properties
 
-# Define routes for different pages
 @app.route("/")
 def home():
     return render_template("home.html")

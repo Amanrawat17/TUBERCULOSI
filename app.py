@@ -8,7 +8,7 @@ import io
 import base64
 
 # Load pre-trained model
-model_path = 'xgb_model.pkl'
+model_path = 'stacking_model.pkl'
 with open(model_path, 'rb') as file:
     model = pickle.load(file)
 
